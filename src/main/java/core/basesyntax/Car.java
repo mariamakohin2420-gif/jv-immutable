@@ -55,9 +55,9 @@ public final class Car {
             return null;
         }
         List<Wheel> copy = new ArrayList<>();
-            for (Wheel wheel : originalWheels) {
-                copy.add(wheel == null ? null : wheel.clone());
-            }
+        for (Wheel wheel : originalWheels) {
+            copy.add(wheel == null ? null : wheel.clone());
+        }
         return copy;
     }
 
@@ -78,10 +78,10 @@ public final class Car {
     @Override
     public String toString() {
         return "Car{"
-            + "year=" + year
-            + ", color='" + color + '\''
-            + ", wheels=" + wheels
-            + ", engine=" + engine
-            + '}';
+                + "year=" + year
+                + ", color='" + color + '\''
+                + ", wheels=" + wheels
+                + ", engine=" + engine
+                + '}';
     }
 }
