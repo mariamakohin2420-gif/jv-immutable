@@ -46,7 +46,7 @@ public final class Car {
 
     public Car addWheel(Wheel newWheel) {
         List<Wheel> newWheels = getCopyOfWheels(this.wheels);
-        newWheels.add(newWheel);
+        newWheels.add(newWheel == null ? null : newWheel.clone());
         return new Car(this.year, this.color, newWheels, this.engine);
     }
 
