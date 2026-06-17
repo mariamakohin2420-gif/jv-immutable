@@ -51,16 +51,16 @@ public final class Car {
     }
 
     private List<Wheel> getCopyOfWheels(List<Wheel> originalWheels) {
-        if (originalWheels == null) {
-            return null;
-        }
         List<Wheel> copy = new ArrayList<>();
-        for (Wheel wheel : originalWheels) {
-            copy.add(wheel == null ? null : wheel.clone());
+        if (originalWheels != null) {
+            for (Wheel wheel : originalWheels) {
+                copy.add(wheel == null ? null : wheel.clone());
+            }
         }
         return copy;
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -75,6 +75,7 @@ public final class Car {
                 && Objects.equals(engine, car.engine);
     }
 
+    @Override
     public int hashCode() {
         return Objects.hash(year, color, wheels, engine);
     }
@@ -89,3 +90,4 @@ public final class Car {
                 + '}';
     }
 }
+
