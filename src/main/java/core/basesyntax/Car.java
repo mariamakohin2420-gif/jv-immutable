@@ -51,11 +51,12 @@ public final class Car {
     }
 
     private List<Wheel> getCopyOfWheels(List<Wheel> originalWheels) {
+        if (originalWheels == null) {
+            return null;
+        }
         List<Wheel> copy = new ArrayList<>();
-        if (originalWheels != null) {
-            for (Wheel wheel : originalWheels) {
-                copy.add(wheel == null ? null : wheel.clone());
-            }
+        for (Wheel wheel : originalWheels) {
+            copy.add(wheel == null ? null : wheel.clone());
         }
         return copy;
     }
