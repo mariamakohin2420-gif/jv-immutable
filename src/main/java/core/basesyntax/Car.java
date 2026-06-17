@@ -19,29 +19,37 @@ public final class Car {
         this.wheels = getCopyOfWheels(wheels);
         this.engine = engine == null ? null : engine.clone();
     }
+
     public int getYear() {
         return year;
     }
+
     public String getColor() {
         return color;
     }
+
     public List<Wheel> getWheels() {
         return getCopyOfWheels(this.wheels);
     }
+
     public Engine getEngine() {
         return engine == null ? null : engine.clone();
     }
+
     public Car changeEngine(Engine engine) {
         return new Car(this.year, this.color, this.wheels, engine);
     }
+
     public Car changeColor(String newColor) {
         return new Car(this.year, newColor, this.wheels, this.engine);
     }
+
     public Car addWheel(Wheel newWheel) {
         List<Wheel> newWheels = getCopyOfWheels(this.wheels);
         newWheels.add(newWheel);
         return new Car(this.year, this.color, newWheels, this.engine);
     }
+
     private List<Wheel> getCopyOfWheels(List<Wheel> originalWheels) {
         List<Wheel> copy = new ArrayList<>();
         if (originalWheels != null) {
@@ -51,6 +59,7 @@ public final class Car {
         }
         return copy;
     }
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -60,9 +69,11 @@ public final class Car {
                 && Objects.equals(wheels, car.wheels)
                 && Objects.equals(engine, car.engine);
     }
+
     public int hashCode() {
         return Objects.hash(year, color, wheels, engine);
     }
+
     @Override
     public String toString() {
         return "Car{"
