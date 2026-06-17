@@ -15,8 +15,16 @@ public class Engine implements Cloneable {
         return horsePower;
     }
 
+    public void setHorsePower(int horsePower) {
+        this.horsePower = horsePower;
+    }
+
     public String getManufacturer() {
         return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public boolean equals(Object o) {

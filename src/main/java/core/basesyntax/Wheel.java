@@ -13,6 +13,10 @@ public class Wheel implements Cloneable {
         return radius;
     }
 
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
+
     public boolean equals(Object o) {
         if (this == o) {
             return true;
