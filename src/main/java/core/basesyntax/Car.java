@@ -15,11 +15,9 @@ public final class Car {
 
     public Car(int year, String color, List<Wheel> wheels, Engine engine) {
         this.year = year;
-        // Захист кольору від null
-        this.color = color == null ? "" : color;
+        this.color = color;
         this.wheels = getCopyOfWheels(wheels);
-        // Захист двигуна від null: якщо null — створюємо порожню заглушку
-        this.engine = engine == null ? new Engine(0, "") : engine.clone();
+        this.engine = engine == null ? null : engine.clone();
     }
 
     public int getYear() {
@@ -35,8 +33,7 @@ public final class Car {
     }
 
     public Engine getEngine() {
-        // Тут двигун уже ніколи не null, тому просто клонуємо
-        return engine.clone();
+        return engine == null ? null : engine.clone();
     }
 
     public Car changeEngine(Engine engine) {
@@ -49,16 +46,20 @@ public final class Car {
 
     public Car addWheel(Wheel newWheel) {
         List<Wheel> newWheels = getCopyOfWheels(this.wheels);
-        newWheels.add(newWheel == null ? new Wheel(0) : newWheel.clone());
+        if (newWheels == null) {
+            newWheels = new ArrayList<>();
+        }
+        newWheels.add(newWheel == null ? null : newWheel.clone());
         return new Car(this.year, this.color, newWheels, this.engine);
     }
 
     private List<Wheel> getCopyOfWheels(List<Wheel> originalWheels) {
+        if (originalWheels == null) {
+            return null;
+        }
         List<Wheel> copy = new ArrayList<>();
-        if (originalWheels != null) {
-            for (Wheel wheel : originalWheels) {
-                copy.add(wheel == null ? new Wheel(0) : wheel.clone());
-            }
+        for (Wheel wheel : originalWheels) {
+            copy.add(wheel == null ? null : wheel.clone());
         }
         return copy;
     }
@@ -93,4 +94,3 @@ public final class Car {
                 + '}';
     }
 }
-
