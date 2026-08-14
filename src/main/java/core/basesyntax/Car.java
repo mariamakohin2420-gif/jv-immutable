@@ -1,7 +1,6 @@
 package core.basesyntax;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +13,7 @@ public final class Car {
     private final List<Wheel> wheels;
     private final Engine engine;
 
-    // Виправлено назву параметра з "wheeels" на "wheels"
+
     public Car(int year, String color, List<Wheel> wheels, Engine engine) {
         this.year = year;
         this.color = color;
@@ -47,8 +46,7 @@ public final class Car {
     }
 
     public Car addWheel(Wheel newWheel) {
-        // Оскільки this.wheels ніколи не null (там мінімум порожній список)
-        // ми можемо безпечно створювати копію через ArrayList
+
         List<Wheel> newWheels = new ArrayList<>();
         for (Wheel wheel : this.wheels) {
             newWheels.add(wheel == null ? null : wheel.clone());
@@ -59,7 +57,7 @@ public final class Car {
 
     private List<Wheel> getCopyOfWheels(List<Wheel> originalWheels) {
         List<Wheel> copy = new ArrayList<>();
-        if (originalWheels == null) {
+        if (originalWheels != null) {
             for (Wheel wheel : originalWheels) {
                 copy.add(wheel == null ? null : wheel.clone());
             }
