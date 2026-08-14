@@ -47,10 +47,9 @@ public final class Car {
     public Car addWheel(Wheel newWheel) {
 
         List<Wheel> newWheels = new ArrayList<>();
-        for (Wheel wheel : this.wheels) {
-            newWheels.add(wheel == null ? null : wheel.clone());
+        if (newWheel != null) {
+            newWheels.add(newWheel.clone());
         }
-        newWheels.add(newWheel == null ? null : newWheel.clone());
         return new Car(this.year, this.color, newWheels, this.engine);
     }
 
@@ -58,7 +57,9 @@ public final class Car {
         List<Wheel> copy = new ArrayList<>();
         if (originalWheels != null) {
             for (Wheel wheel : originalWheels) {
-                copy.add(wheel == null ? null : wheel.clone());
+                if (wheel != null) {
+                    copy.add(wheel.clone());
+                }
             }
         }
 
