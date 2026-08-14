@@ -14,6 +14,9 @@ public final class Car {
     private final Engine engine;
 
     public Car(int year, String color, List<Wheel> wheels, Engine engine) {
+        if (wheels == null) {
+            throw new NullPointerException("wheels cannot be null");
+        }
         this.year = year;
         this.color = color;
         this.wheels = getCopyOfWheels(wheels);
@@ -46,10 +49,8 @@ public final class Car {
 
     public Car addWheel(Wheel newWheel) {
 
-        List<Wheel> newWheels = new ArrayList<>();
-        if (newWheel != null) {
-            newWheels.add(newWheel.clone());
-        }
+        List<Wheel> newWheels = getCopyOfWheels(this.wheels);
+        newWheels.add(newWheel == null ? null : newWheel.clone());
         return new Car(this.year, this.color, newWheels, this.engine);
     }
 
@@ -57,9 +58,7 @@ public final class Car {
         List<Wheel> copy = new ArrayList<>();
         if (originalWheels != null) {
             for (Wheel wheel : originalWheels) {
-                if (wheel != null) {
-                    copy.add(wheel.clone());
-                }
+                copy.add(wheel == null ? null : wheel.clone());
             }
         }
 
