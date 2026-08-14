@@ -58,19 +58,13 @@ public final class Car {
     }
 
     private List<Wheel> getCopyOfWheels(List<Wheel> originalWheels) {
-        // Якщо передали null — повертаємо незмінний порожній список []
-        if (originalWheels == null) {
-            return Collections.emptyList();
-        }
-        // Якщо список порожній — теж повертаємо незмінний порожній список
-        if (originalWheels.isEmpty()) {
-            return Collections.emptyList();
-        }
-        // Якщо там є елементи — робимо глибоку копію
         List<Wheel> copy = new ArrayList<>();
-        for (Wheel wheel : originalWheels) {
-            copy.add(wheel == null ? null : wheel.clone());
+        if (originalWheels == null) {
+            for (Wheel wheel : originalWheels) {
+                copy.add(wheel == null ? null : wheel.clone());
+            }
         }
+
         return copy;
     }
 
